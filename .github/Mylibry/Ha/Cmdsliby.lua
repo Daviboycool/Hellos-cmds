@@ -2,15 +2,18 @@ local CommandLibrary = {}
 
 local prefix = "!"
 local commands = {}
+local discordLink = "https://discord.com"
+local youtubeLink = "https://youtube.com"
 
+-- Function to create the GUI with a nice design
 function CommandLibrary:CreateGUI()
     local gui = Instance.new("ScreenGui")
     gui.Name = "CommandLibraryGUI"
     gui.Parent = game.CoreGui
 
     local background = Instance.new("Frame")
-    background.Size = UDim2.new(0.4, 0, 0.5, 0)
-    background.Position = UDim2.new(0.3, 0, 0.25, 0)
+    background.Size = UDim2.new(0.3, 0, 0.4, 0)  -- Smaller background
+    background.Position = UDim2.new(0.35, 0, 0.3, 0)
     background.BackgroundTransparency = 0.2
     background.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     background.BorderSizePixel = 0
@@ -22,6 +25,7 @@ function CommandLibrary:CreateGUI()
     uicorner.CornerRadius = UDim.new(0, 12)
     uicorner.Parent = background
 
+    -- Creating the TextBox with a nice design
     local textbox = Instance.new("TextBox")
     textbox.Size = UDim2.new(0.8, 0, 0.1, 0)
     textbox.Position = UDim2.new(0.1, 0, 0.1, 0)
@@ -29,7 +33,7 @@ function CommandLibrary:CreateGUI()
     textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
     textbox.Font = Enum.Font.Gotham
     textbox.TextSize = 14
-    textbox.PlaceholderText = "Type a command..."
+    textbox.PlaceholderText = "cmd here"  -- English placeholder
     textbox.PlaceholderColor3 = Color3.fromRGB(178, 178, 178)
     textbox.ClearTextOnFocus = true
     textbox.Parent = background
@@ -53,6 +57,7 @@ function CommandLibrary:CreateGUI()
         end
     end)
 
+    -- Creating the !cmds GUI
     local cmdsGui = Instance.new("Frame")
     cmdsGui.Size = UDim2.new(0.5, 0, 0.6, 0)
     cmdsGui.Position = UDim2.new(0.25, 0, 0.2, 0)
@@ -95,6 +100,7 @@ function CommandLibrary:CreateGUI()
         cmdsGui.Visible = false
     end)
 
+    -- Adding the !cmds command
     CommandLibrary:AddCommand("cmds", function()
         cmdsList.Text = "Commands:\n"
         for cmd, _ in pairs(commands) do
@@ -102,16 +108,55 @@ function CommandLibrary:CreateGUI()
         end
         cmdsGui.Visible = true
     end)
+
+    -- Discord button
+    local discordButton = Instance.new("ImageButton")
+    discordButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+    discordButton.Position = UDim2.new(0.05, 0, 0.85, 0)
+    discordButton.Image = "rbxassetid://6035036180" -- Discord icon asset
+    discordButton.BackgroundTransparency = 1
+    discordButton.Parent = gui
+
+    discordButton.MouseButton1Click:Connect(function()
+        setclipboard(discordLink)  -- Copies the Discord link to clipboard
+        print("Discord link copied: " .. discordLink)
+    end)
+
+    -- YouTube button
+    local youtubeButton = Instance.new("ImageButton")
+    youtubeButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+    youtubeButton.Position = UDim2.new(0.85, 0, 0.85, 0)
+    youtubeButton.Image = "rbxassetid://6035047389" -- YouTube icon asset
+    youtubeButton.BackgroundTransparency = 1
+    youtubeButton.Parent = gui
+
+    youtubeButton.MouseButton1Click:Connect(function()
+        setclipboard(youtubeLink)  -- Copies the YouTube link to clipboard
+        print("YouTube link copied: " .. youtubeLink)
+    end)
 end
 
+-- Function to add commands
 function CommandLibrary:AddCommand(name, callback)
     commands[name] = callback
 end
 
+-- Function to change the Discord link
+function CommandLibrary:SetDiscordLink(newLink)
+    discordLink = newLink
+end
+
+-- Function to change the YouTube link
+function CommandLibrary:SetYoutubeLink(newLink)
+    youtubeLink = newLink
+end
+
+-- Function to change the prefix
 function CommandLibrary:SetPrefix(newPrefix)
     prefix = newPrefix
 end
 
+-- Function to parse the command input
 function CommandLibrary:ParseCommand(text)
     if string.sub(text, 1, #prefix) == prefix then
         local split = string.split(string.sub(text, #prefix + 1), " ")
