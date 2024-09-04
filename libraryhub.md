@@ -1,23 +1,25 @@
 # CustomLibrary Tutorial
 
-This repository contains the `CustomLibrary`, which allows you to create custom GUIs in Roblox with ease. Below is an example of how to use the library.
+- This repository contains the `CustomLibrary`, which allows you to create custom GUIs in Roblox with ease. Below is an example of how to use the library.
 
 ## How to Use
 
-1. **Load the Library**
+- **Load the Library**
 
-   First, load the `CustomLibrary` into your game using the following code:
+##   First, load the `CustomLibrary` into your game using the following code:
 
-   ```lua
+```lua
    local CustomLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Daviboycool/Hellos-cmds/main/.github/Githubmyhublib.lua"))()
 ```
 
 - Create the ScreenGui and MainFrame
+
 ```lua
 local ScreenGui = CustomLibrary:CreateScreenGui(game.Players.LocalPlayer:WaitForChild("PlayerGui"))
 local MainFrame = CustomLibrary:CreateMainFrame(ScreenGui)
 ```
---Set the Banner
+- Set the Banner
+
 ```lua
 CustomLibrary:SetBanner(MainFrame, "1234567890") -- Replace with your banner image ID
 ```
@@ -32,6 +34,7 @@ end)
 ```
 
 - Create a Modern Menu I don't know 
+
 ```lua
 local MenuFrame, toggleMenu = CustomLibrary:CreateModernMenu(MainFrame, "Options Menu")
 
@@ -45,6 +48,7 @@ end)
 ```
 
 - Add a Toggle Button to Open the Menu
+
 ```lua
 local toggleButton = CustomLibrary:AddButton(MainFrame, "Open Menu", UDim2.new(0.1, 0, 0.8, 0), UDim2.new(0.8, 0, 0.1, 0), function()
     toggleMenu()
@@ -52,6 +56,7 @@ end)
 ```
 
 - Create a Key System
+
 ```lua
 local keySystemFrame = CustomLibrary:CreateKeySystem(MainFrame, "YourKeyHere")
 ```
@@ -71,11 +76,11 @@ local keySystemFrame = CustomLibrary:CreateKeySystem(MainFrame, "YourKeyHere")
 
 ### How to Use
 
-1. **Create the GitHub Repository** and upload the necessary files, including `README.md` and the library file (`Githubmyhublib.lua`).
+- **Create the GitHub Repository** and upload the necessary files, including `README.md` and the library file (`Githubmyhublib.lua`).
 
-2. **Add the Example Code** provided in `README.md` to help users understand how to use the library.
+- **Add the Example Code** provided in `README.md` to help users understand how to use the library.
 
-3. **Share the Link** to your GitHub repository with users who might be interested in using the `CustomLibrary`.
+- **Share the Link** to your GitHub repository with users who might be interested in using the `CustomLibrary`.
 
-This will provide clear documentation and an example of how to use the library. If you need any further adjustments or specific features, just let me know!
+- This will provide clear documentation and an example of how to use the library. If you need any further adjustments or specific features, just let me know!
 
