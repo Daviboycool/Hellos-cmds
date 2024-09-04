@@ -46,6 +46,14 @@ CommandLibrary:SetPrefix("yourprefix")
 - By default, the CommandLibrary includes a !cmds command that shows a list of all added commands and allows the user to change the prefix. Simply type !cmds in the TextBox to access this feature.
 ## Example
 
+
+## use this otherwise the thing won't work it's used to put your discord 
+-- here code
+```lua
+CommandLibrary:SetDiscordLink("https://discord.gg/yourseever")
+CommandLibrary:SetYoutubeLink("https://youtube.com/your
+Channel")
+```
 -Here's a complete example:
 ```lua
 local CommandLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Daviboycool/Hellos-cmds/main/.github/Mylibry/Ha/Cmdsliby.lua"))()
@@ -60,12 +68,9 @@ CommandLibrary:AddCommand("toggle", function()
     print("This is a toggle command!")
 end)
 
-CommandLibrary:SetPrefix("?")
-```
-## use this otherwise the thing won't work it's used to put your discord 
--- here code
-```lua
 CommandLibrary:SetDiscordLink("https://discord.gg/yourseever")
 CommandLibrary:SetYoutubeLink("https://youtube.com/your
 Channel")
+
+CommandLibrary:SetPrefix("?")
 ```
