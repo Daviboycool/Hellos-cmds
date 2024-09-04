@@ -65,6 +65,7 @@ CommandLibrary:SetPrefix("?")
 ## use this otherwise the thing won't work it's used to put your discord 
 -- here code
 ```lua
-CommandLibrary:SetDiscordLink("https://discord.gg/seulink")
-CommandLibrary:SetYoutubeLink("https://youtube.com/seucanal")
+CommandLibrary:SetDiscordLink("https://discord.gg/yourseever")
+CommandLibrary:SetYoutubeLink("https://youtube.com/your
+Channel")
 ```
