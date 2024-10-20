@@ -1,6 +1,6 @@
 local NotificationLibrary = {}
 
-function NotificationLibrary:CreateNotification(message, confirmCallback)
+function NotificationLibrary:CreateNotification(message, confirmCallback, colorf, colora, buttoncolor)
     local ScreenGui = Instance.new("ScreenGui")
     local NotificationFrame = Instance.new("Frame")
     local ConfirmButton = Instance.new("TextButton")
@@ -19,7 +19,7 @@ function NotificationLibrary:CreateNotification(message, confirmCallback)
     NotificationText.Parent = NotificationFrame
 
     -- Notification Frame design (solid black and centered)
-    NotificationFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Preto sólido
+    NotificationFrame.BackgroundColor3 = Color3.fromRGB(colora) -- Preto sólido
     NotificationFrame.Size = UDim2.new(0, 450, 0, 300)
     NotificationFrame.Position = UDim2.new(0.5, -225, 0.5, -150)
 
@@ -29,7 +29,7 @@ function NotificationLibrary:CreateNotification(message, confirmCallback)
 
     -- Stroke (borda externa branca) no Frame
     UIStroke.Parent = NotificationFrame
-    UIStroke.Color = Color3.fromRGB(255, 255, 255)
+    UIStroke.Color = Color3.fromRGB(colorf)
     UIStroke.Thickness = 3
 
     -- Notification Text design (supports 900 characters)
@@ -45,7 +45,7 @@ function NotificationLibrary:CreateNotification(message, confirmCallback)
     -- Confirm Button design (rounded, white color with hover effect)
     ConfirmButton.Size = UDim2.new(0.4, 0, 0.2, 0)
     ConfirmButton.Position = UDim2.new(0.05, 0, 0.7, 0)
-    ConfirmButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ConfirmButton.BackgroundColor3 = Color3.fromRGB(buttoncolor)
     ConfirmButton.Text = "Confirm"
     ConfirmButton.Font = Enum.Font.GothamBold
     ConfirmButton.TextScaled = true
@@ -55,19 +55,10 @@ function NotificationLibrary:CreateNotification(message, confirmCallback)
     UICornerConfirm.Parent = ConfirmButton
     UICornerConfirm.CornerRadius = UDim.new(1, 0)
 
-    -- Hover effect for Confirm Button
-    ConfirmButton.MouseEnter:Connect(function()
-        ConfirmButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Verde claro ao passar o mouse
-    end)
-
-    ConfirmButton.MouseLeave:Connect(function()
-        ConfirmButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- Volta ao branco
-    end)
-
     -- Cancel Button design (rounded, white color with hover effect)
     CancelButton.Size = UDim2.new(0.4, 0, 0.2, 0)
     CancelButton.Position = UDim2.new(0.55, 0, 0.7, 0)
-    CancelButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    CancelButton.BackgroundColor3 = Color3.fromRGB(buttoncolor)
     CancelButton.Text = "Cancel"
     CancelButton.Font = Enum.Font.GothamBold
     CancelButton.TextScaled = true
@@ -75,16 +66,8 @@ function NotificationLibrary:CreateNotification(message, confirmCallback)
 
     -- Rounded corners for Cancel Button
     UICornerCancel.Parent = CancelButton
-    UICornerCancel.CornerRadius = UDim.new(1, 0)
+    UICornerCancel.CornerRadius = UDim.new(0.2, 0)
 
-    -- Hover effect for Cancel Button
-    CancelButton.MouseEnter:Connect(function()
-        CancelButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Vermelho claro ao passar o mouse
-    end)
-
-    CancelButton.MouseLeave:Connect(function()
-        CancelButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- Volta ao branco
-    end)
 
     -- Script for Confirm and Cancel buttons
     ConfirmButton.MouseButton1Click:Connect(function()
