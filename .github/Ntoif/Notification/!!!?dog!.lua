@@ -66,7 +66,7 @@ function NotificationLibrary:CreateNotification(message, confirmCallback, colorf
 
     -- Rounded corners for Cancel Button
     UICornerCancel.Parent = CancelButton
-    UICornerCancel.CornerRadius = UDim.new(0.2, 0)
+    UICornerCancel.CornerRadius = UDim.new(1, 0)
 
 
     -- Script for Confirm and Cancel buttons
